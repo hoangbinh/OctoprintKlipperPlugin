@@ -258,7 +258,8 @@ class KlipperPlugin(
       elif "//" in line:
          self._message = self._message + line.strip('/')
          if not self._parsing_response:
-            self.updateStatus("info", self._message)
+		if "Klipper state" in self._message:
+            	self.updateStatus("info", self._message)
          self._parsing_response = True
       else:
          if self._parsing_response:
